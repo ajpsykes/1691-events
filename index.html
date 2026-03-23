@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1691 — What's On in Limerick, 23–30 March 2026</title>
+  <meta name="description" content="What's on in Limerick this week.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:        #6BAA8E;
+      --accent-hover:  #4E8A70;
+      --accent-light:  #C8DDD0;
+      --dark:          #1A4044;
+      --base:          #F5F7F4;
+      --neutral:       #5A7A6E;
+      --card-bg:       #FDFCFB;
+      --card-tint:     #F8F4F2;
+      --card-border:   rgba(30,30,30,0.07);
+      --footer-bg:     #122E30;
+      --footer-text:   #A8C0BC;
+      --footer-muted:  #486060;
+      --font: 'DM Sans', system-ui, sans-serif;
+      --r-sm: 8px; --r-md: 12px; --r-lg: 16px;
+      --sh-sm: 0 2px 10px rgba(0,0,0,0.06);
+      --sh-md: 0 6px 24px rgba(0,0,0,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--base); color: var(--dark); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .hero { position: relative; min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: url('hero.jpg') center 40% / cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,6,4,0.10) 0%, rgba(8,6,4,0.30) 35%, rgba(8,6,4,0.76) 100%); }
+    .hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; width: 100%; padding: 48px 32px 60px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.18); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 22px; }
+    .hero-dot { width: 5px; height: 5px; background: #F8D4C0; border-radius: 50%; animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.75);} }
+    .hero-title { font-size: clamp(52px, 10vw, 88px); font-weight: 800; letter-spacing: -1.5px; text-transform: uppercase; color: #fff; line-height: 0.92; margin-bottom: 22px; }
+    .hero-title span { display: block; color: rgba(248,212,192,0.85); font-size: 0.52em; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; margin-top: 14px; }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--dark); font-family: var(--font); font-size: 14px; font-weight: 700; text-decoration: none; padding: 13px 22px; border-radius: var(--r-sm); transition: background 0.15s, transform 0.1s; white-space: nowrap; }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.82); font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; }
+    .btn-ghost:hover { color: #fff; border-color: #fff; }
+    .count-strip { background: var(--dark); padding: 16px 32px; }
+    .count-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: nowrap; }
+    .count-item { display: flex; align-items: baseline; gap: 7px; }
+    .count-item strong { font-size: 20px; font-weight: 800; color: var(--accent); }
+    .count-item span { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .count-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.10); flex-shrink: 0; }
+    .main { max-width: 860px; margin: 0 auto; padding: 56px 32px 80px; }
+    .cat-section { margin-bottom: 56px; animation: fadeUp 0.45s ease both; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);} }
+    .cat-section:nth-child(1){animation-delay:0.05s;} .cat-section:nth-child(2){animation-delay:0.10s;} .cat-section:nth-child(3){animation-delay:0.15s;} .cat-section:nth-child(4){animation-delay:0.20s;} .cat-section:nth-child(5){animation-delay:0.25s;} .cat-section:nth-child(6){animation-delay:0.30s;}
+    .cat-strip { background: linear-gradient(105deg, #1A4044 0%, #6BAA8E 100%); border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .cat-strip-left { display: flex; align-items: center; gap: 12px; }
+    .cat-bar { width: 3px; height: 26px; background: rgba(255,255,255,0.7); border-radius: 2px; flex-shrink: 0; }
+    .cat-name { font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.2px; color: #fff; }
+    .cat-count { font-size: 11px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.35); padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.15); }
+    .cat-cards { border: 1px solid var(--card-border); border-top: none; border-radius: 0 0 var(--r-lg) var(--r-lg); overflow: hidden; }
+    .event-card { display: grid; grid-template-columns: 1fr auto; gap: 10px 18px; align-items: center; background: var(--card-bg); padding: 18px 22px; text-decoration: none; color: inherit; border-bottom: 1px solid var(--card-border); position: relative; transition: background 0.15s; }
+    .event-card:last-child { border-bottom: none; }
+    .event-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); opacity: 0; transition: opacity 0.15s; }
+    .event-card:hover { background: #FDF7F2; }
+    .event-card:hover::before { opacity: 1; }
+    .event-card.tint { background: var(--card-tint); }
+    .event-card.tint:hover { background: #FAF0E6; }
+    .event-main { min-width: 0; }
+    .event-title { font-size: 15px; font-weight: 600; color: var(--dark); line-height: 1.3; margin-bottom: 7px; }
+    .event-meta { display: flex; flex-wrap: wrap; gap: 5px 14px; }
+    .meta-chip { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--neutral); }
+    .meta-chip svg { opacity: 0.6; flex-shrink: 0; }
+    .event-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+    .badge-price { font-size: 12px; font-weight: 600; color: var(--neutral); background: transparent; border: 1.5px solid rgba(155,147,134,0.5); padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+    .badge-free { font-size: 12px; font-weight: 700; color: #1A6634; background: transparent; border: 1.5px solid #1A6634; padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+    .badge-plain { font-size: 12px; font-weight: 600; color: var(--neutral); background: transparent; border: 1.5px solid rgba(155,147,134,0.5); padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+    .more-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; white-space: nowrap; transition: gap 0.15s; }
+    .more-link:hover { gap: 7px; }
+    .site-footer { background: var(--footer-bg); position: relative; overflow: hidden; }
+    .site-footer::before { content: ''; position: absolute; top: -120px; left: -100px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(232,128,74,0.10) 0%, transparent 65%); pointer-events: none; }
+    .site-footer::after { content: ''; position: absolute; bottom: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(232,128,74,0.06) 0%, transparent 65%); pointer-events: none; }
+    .footer-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 64px 32px 40px; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+    .footer-brand { font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: #fff; line-height: 0.95; margin-bottom: 14px; }
+    .footer-tagline { font-size: 14px; color: var(--footer-text); line-height: 1.65; max-width: 250px; margin-bottom: 26px; }
+    .footer-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-light); color: var(--dark); font-size: 14px; font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: var(--r-sm); transition: background 0.15s, color 0.15s, transform 0.1s; }
+    .footer-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+    .footer-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: start; }
+    .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 18px 16px; }
+    .stat-num { font-size: 30px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--footer-text); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: var(--footer-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 12px; color: var(--footer-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--footer-text); }
+    @media (max-width: 600px) { .hero-inner { padding: 28px 20px 44px; } .hero-title { font-size: 48px; } .main { padding: 40px 20px 60px; } .event-card { grid-template-columns: 1fr; } .event-actions { flex-direction: row; justify-content: space-between; align-items: center; } .footer-top { grid-template-columns: 1fr; gap: 32px; } .footer-inner { padding: 48px 20px 32px; } .count-strip { padding: 12px 16px; } .count-inner { gap: 12px; } .count-item strong { font-size: 16px; } .count-item span { font-size: 10px; } .count-sep { height: 16px; } }
+  </style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-dot"></span>Limerick  ·  Updated weekly</div>
+    <h1 class="hero-title">1691<span>What's On &nbsp;·&nbsp; {{DATE_RANGE}}</span></h1>
+    <div class="hero-actions">
+      <a href="https://www.1691.ie" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Subscribe — it's free</a>
+      <a href="https://www.1691.ie/archive" class="btn-ghost">Read the newsletter<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+<div class="count-strip">
+  <div class="count-inner">
+    <div class="count-item"><strong>96</strong><span>events this week</span></div>
+    <div class="count-sep"></div>
+    <div class="count-item"><strong>5</strong><span>categories</span></div>
+    <div class="count-sep"></div>
+    <div class="count-item"><strong>2</strong><span>free to attend</span></div>
+  </div>
+</div>
+<main class="main">
+
+<section class="cat-section"><div class="cat-strip"><div class="cat-strip-left"><div class="cat-bar"></div><span class="cat-name">Live Music</span></div><span class="cat-count">19 events</span></div><div class="cat-cards">
+<a class="event-card" href="https://thereg.ie/events/">
+  <div class="event-title">Live Music Mondays with Anthony Roche</div>
+  <div class="event-meta">
+    <span class="event-date">Mon 23 Mar [21:00]</span>
+    <span class="event-location">The Reg Waterford</span>
+  </div>
+</a>
+<a class="event-card alt" href="https://thereg.ie/events/">
+  <div class="event-title">Live Music Tuesdays with Tom Comerford</div>
+  <div class="event-meta">
+    <span class="event-date">Tue 24 Mar [21:00]</span>
+    <span class="event-location">The Reg Waterford</span>
+  </div>
+</a>\n<a class="event-card tint" href="https://www.eventbrite.ie/e/bone-machine-the-music-of-tom-waits-tickets-1977923796319?aff=oddtdtcreator"><span class="event-title">Bone Machine - The Music of Tom Waits</span><span class="event-date">Fri 27 Mar [20:30]</span><span class="event-location">The Seantí</span><span class="event-price">€15 plus fees</span></a>
+<a class="event-card" href="https://allevents.in/waterford/this-weekend"><span class="event-title">Evening With Liverpool Legends</span><span class="event-date">Fri 27 Mar [19:30]</span><span class="event-location">Theatre Royal Waterford</span></a>
+<a class="event-card tint" href="https://allevents.in/waterford/this-weekend"><span class="event-title">BAILE DA 051</span><span class="event-date">Sat 28 Mar [22:00]</span><span class="event-location">FACTORY</span><span class="event-price">7</span></a>
+<a class="event-card" href="https://allevents.in/waterford/this-weekend"><span class="event-title">GREENE &amp; SHINE at Aggie Hayes'</span><span class="event-date">Sat 28 Mar [21:00]</span><span class="event-location">Aggie Hayes Pub</span></a>
+<a class="event-card tint" href="https://allevents.in/waterford/this-weekend"><span class="event-title">90’s &amp; 00’s HOUSE MUSIC NIGHT</span><span class="event-date">Sat 28 Mar [20:00]</span><span class="event-location">Revolution Craft Beer &amp; Whiskey Bar</span><span class="event-price">12</span></a>\n<a class="event-card" href="https://www.mcd.ie/artists/kyla-cobbler" data-category="Live Music" data-date="2026-03-28" data-weekday="Sat" data-time="19:00" data-location="Theatre Royal, Waterford" data-location-short="Theatre Royal" data-price=""><span class="event-title">Kyla Cobbler at Theatre Royal</span><span class="event-date">Sat 28 Mar [19:00]</span><span class="event-location">Theatre Royal</span></a>\n<a class="event-card tint" href="https://ie.powertik.com/en/events/knives-live-at-luca-records/sessions/27-03-2026-20-00-luca-records-and-decks"><div class="event-meta"><span class="event-date">Fri 27 Mar [20:00]</span><span class="event-location">Luca Records & Decks</span></div><div class="event-title">Knives</div></a>
+<a class="event-card" href="https://www.waterford-news.ie/whatson/whats-on-lots-of-great-events-coming-up-in-waterford_arid-87687.html"><div class="event-meta"><span class="event-date">Ongoing</span><span class="event-location">Dr Mary</span></div><div class="event-title">What's On: Lots of great events coming up in Waterford - Whatson</div></a>
+<a class="event-card tint" href="https://journalofmusic.com/listing/25-02-26/vladimir-jablokov-close"><div class="event-meta"><span class="event-date">Ongoing</span><span class="event-location">The Dr Mary Strangman Large Room</span></div><div class="event-title">Vladimir Jablokov - Up Close | The Journal of Music in Ireland</div></a>
+<a class="event-card" href="https://uluru.ie/2019/index.php/175-2019-07-23-14-35-85?iccaldate=2024-5-1"><div class="event-meta"><span class="event-date">Ongoing</span><span class="event-location">The Uluru Outback Bar & Restaurant</span></div><div class="event-title">Dj John Keane - Waterford - The Uluru Outback Bar & Restaurant</div></a>
+</div></section>
+
+<section class="cat-section"><div class="cat-strip"><div class="cat-strip-left"><div class="cat-bar"></div><span class="cat-name">Arts & Culture</span></div><span class="cat-count">20 events</span></div><div class="cat-cards">
+<a class="event-card" href="https://entertainment.ie/events/listing/all/waterford/" title="Outlandish | Mon 23 Mar [10:00] | Garter Lane Arts Centre | €0.00" data-category="Arts & Culture" data-date="2026-03-23" data-weekday="Monday" data-start-time="10:00" data-location="Garter Lane Arts Centre" data-location-short="Garter Lane Arts Centre" data-price="€0.00" data-date-label="Mon 23 Mar [10:00]">Outlandish — Mon 23 Mar [10:00] — Garter Lane Arts Centre — €0.00</a>
+<a class="event-card alt" href="https://theatreroyal.ie/shows/" title="CALAMITY JANE | Sat 28 Mar [19:30] | Theatre Royal Waterford | €30.00" data-category="Arts & Culture" data-date="2026-03-28" data-weekday="Saturday" data-start-time="19:30" data-location="Theatre Royal Waterford" data-location-short="Theatre Royal Waterford" data-price="€30.00" data-date-label="Sat 28 Mar [19:30]">CALAMITY JANE — Sat 28 Mar [19:30] — Theatre Royal Waterford — €30.00</a>\n<a href="" class="event-card tint"><span class="event-title">Free Pop-Up Lunchtime Recitals</span><span class="event-details"><span class="event-date">Ongoing</span><span class="event-location">Dungarvan</span></span></a>
+<a href="https://scouts.yutori.com/api/view?url=https%3A%2F%2Fwaterfordlibrary.net%2Fevent%2Ffiber-fanatics-meet-up%2F2027-05-06&referrer=email&scout_id=1e1136bb-9fbd-42a7-9835-d420f957973d&destination=source" class="event-card"><span class="event-title">Fiber Fanatics Meet-Up</span><span class="event-details"><span class="event-date">Thu 26 Mar [14:00]</span><span class="event-location">Waterford Public Library</span><span class="event-price">FREE</span></span></a>
+<a href="https://www.garterlane.ie/" class="event-card tint"><span class="event-title">Turner and Constable Film Screening at Garter Lane</span><span class="event-details"><span class="event-date">Wed 25 Mar [19:30]</span><span class="event-location">Garter Lane Theatre</span><span class="event-price">€11.50</span></span></a>
+<a href="https://www.garterlane.ie/" class="event-card"><span class="event-title">CPD: Articulating Your Practice Workshop at Garter Lane</span><span class="event-details"><span class="event-date">Fri 27 Mar [18:00]</span><span class="event-location">Garter Lane Arts Centre</span></span></a>
+<a href="https://www.instagram.com/p/DWAGK2zjXIA/" class="event-card tint"><span class="event-title">LOOK WHAT I CAN DO 2026</span><span class="event-details"><span class="event-date">Sat 28 Mar [12:00]</span><span class="event-location">The Art Studio Inc.</span></span></a>\n<a class="event-card" href="https://www.waterfordlive.ie/news/what-s-on/2018635/big-return-to-waterford-for-award-winning-artist-robert-jackson-at-gallery-of-art.html">
+  <div class="event-card__header">
+    <span class="event-card__category">Arts & Culture</span>
+    <span class="event-card__date-label">Ongoing</span>
+  </div>
+  <div class="event-card__title">Big return to Waterford for award-winning artist Robert Jackson at Gallery of Art</div>
+  <div class="event-card__footer">
+    <span class="event-card__location">Waterford Gallery of Art</span>
+  </div>
+</a>
+<a class="event-card alt" href="https://about.hse.ie/news/new-shoots-creative-programme-features-in-waterfords-well-festival/">
+  <div class="event-card__header">
+    <span class="event-card__category">Arts & Culture</span>
+    <span class="event-card__date-label">Ongoing</span>
+  </div>
+  <div class="event-card__title">“New Shoots” creative programme features in Waterford's 'Well' Festival - About the HSE</div>
+  <div class="event-card__footer">
+    <span class="event-card__location">Index Gallery</span>
+  </div>
+</a>
+<a class="event-card" href="https://www.munster-express.ie/new-shoots-creative-programme-features-in-waterfords-well-festival/">
+  <div class="event-card__header">
+    <span class="event-card__category">Arts & Culture</span>
+    <span class="event-card__date-label">Ongoing</span>
+  </div>
+  <div class="event-card__title">New Shoots' creative programme features in Waterford's 'Well' Festival</div>
+  <div class="event-card__footer">
+    <span class="event-card__location">Index Gallery</span>
+  </div>
+</a>
+<a class="event-card alt" href="https://waterfordcouncil.ie/reminder-exhibition-robert-jackson-as-below-so-above/">
+  <div class="event-card__header">
+    <span class="event-card__category">Arts & Culture</span>
+    <span class="event-card__date-label">Ongoing</span>
+  </div>
+  <div class="event-card__title">Reminder: Exhibition : Robert Jackson, 'as below, so above' - Waterford City & County Council</div>
+  <div class="event-card__footer">
+    <span class="event-card__time">18:00</span>
+    <span class="event-card__location">Waterford Gallery of Art</span>
+  </div>
+</a>
+<a class="event-card" href="https://thegloss.ie/irish-sculptor-catherine-greenes-new-exhibition-inspired-by-st-brigid/">
+  <div class="event-card__header">
+    <span class="event-card__category">Arts & Culture</span>
+    <span class="event-card__date-label">Ongoing</span>
+  </div>
+  <div class="event-card__title">Irish Sculptor Catherine Greene's New Exhibition Inspired By St Brigid</div>
+  <div class="event-card__footer">
+    <span class="event-card__location">Waterford City</span>
+  </div>
+</a>\n<a class="event-card tint" href="https://www.waterford-news.ie/news/health/acclaimed-artist-showcases-body-of-work-at-waterford-gallery-of-art_arid-89356.html" data-category="Arts & Culture" data-date="" data-weekday="" data-start-time="" data-location="Waterford Gallery of Art" data-price="" data-date-label="Ongoing" data-location-short="Waterford Gallery of Art" aria-label="Acclaimed artist showcases body of work at Waterford Gallery of Art - Health at Waterford Gallery of Art, Ongoing"><span class="event-date">Ongoing</span><span class="event-title">Acclaimed artist showcases body of work at Waterford Gallery of Art - Health</span><span class="event-location">Waterford Gallery of Art</span></a>
+<a class="event-card" href="https://about.hse.ie/news/salience-an-art-exhibition-in-university-hospital-waterford/" data-category="Arts & Culture" data-date="" data-weekday="" data-start-time="" data-location="University Hospital Waterford" data-price="" data-date-label="Ongoing" data-location-short="University Hospital Waterford" aria-label="“Salience” – an art exhibition in University Hospital Waterford - About the HSE at University Hospital Waterford, Ongoing"><span class="event-date">Ongoing</span><span class="event-title">“Salience” – an art exhibition in University Hospital Waterford - About the HSE</span><span class="event-location">University Hospital Waterford</span></a>
+<a class="event-card tint" href="https://www.waterford-news.ie/whatson/whats-on-in-waterford-live-music-art-exhibitions-and-more_arid-90122.html" data-category="Arts & Culture" data-date="" data-weekday="" data-start-time="" data-location="University Hospital Waterford" data-price="" data-date-label="Ongoing" data-location-short="University Hospital Waterford" aria-label="What's on in Waterford : Live music, art exhibitions and more - Whatson at University Hospital Waterford, Ongoing"><span class="event-date">Ongoing</span><span class="event-title">What's on in Waterford : Live music, art exhibitions and more - Whatson</span><span class="event-location">University Hospital Waterford</span></a>
+<a class="event-card" href="https://www.waterford-news.ie/news/health/tickets-moving-quickly-for-blackwater-valley-opera-festival_arid-90120.html" data-category="Arts & Culture" data-date="" data-weekday="" data-start-time="" data-location="Lismore" data-price="" data-date-label="Ongoing" data-location-short="Lismore" aria-label="Tickets moving quickly for Blackwater Valley Opera Festival - Health - Waterford News & Star at Lismore, Ongoing"><span class="event-date">Ongoing</span><span class="event-title">Tickets moving quickly for Blackwater Valley Opera Festival - Health - Waterford News & Star</span><span class="event-location">Lismore</span></a>
+<a class="event-card tint" href="https://www.waterford-news.ie/whatson/view-from-the-green-room-colour-bursts_arid-90843.html" data-category="Arts & Culture" data-date="" data-weekday="" data-start-time="" data-location="Coastguard Cultural Centre, Tramore" data-price="" data-date-label="Ongoing" data-location-short="Coastguard Cultural Centre" aria-label="View from the Green Room: Colour bursts - Whatson - Waterford News & Star at Coastguard Cultural Centre, Tramore, Ongoing"><span class="event-date">Ongoing</span><span class="event-title">View from the Green Room: Colour bursts - Whatson - Waterford News & Star</span><span class="event-location">Coastguard Cultural Centre</span></a>
+</div></section>
+
+<section class="cat-section"><div class="cat-strip"><div class="cat-strip-left"><div class="cat-bar"></div><span class="cat-name">Food & Drink</span></div><span class="cat-count">1 events</span></div><div class="cat-cards"><a href="https://www.waterfordfestivaloffood.com/files/WWFF_Brochure_2026.pdf" class="event-card"><div class="event-main"><p class="event-title">Waterford Festival of Food – Family Activities at Dungarvan Castle</p><div class="event-meta"><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Wed 25 Mar [10:00]</span><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Dungarvan Castle</span></div></div><div class="event-actions"><span class="more-link">More info <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a></div></section>
+
+<section class="cat-section"><div class="cat-strip"><div class="cat-strip-left"><div class="cat-bar"></div><span class="cat-name">Family Friendly</span></div><span class="cat-count">5 events</span></div><div class="cat-cards"><a href="https://theatreroyal.ie/shows/" class="event-card"><div class="event-main"><p class="event-title">YOUTH DANCE FOR LIFE</p><div class="event-meta"><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Thu 26 Mar [19:30]</span><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Theatre Royal Waterford</span></div></div><div class="event-actions"><span class="badge-price">€7.50 - €12.50</span><span class="more-link">More info <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a><a href="https://garterlane.ie/events/" class="event-card tint"><div class="event-main"><p class="event-title">Connect Studio Debut Dance Showcase</p><div class="event-meta"><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Fri 27 Mar [19:00]</span><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Theatre</span></div></div><div class="event-actions"><span class="badge-price">€19 + booking fee / €14 (15yrs + under) + booking fee</span><span class="more-link">More info <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a><a href="https://allevents.in/waterford/this-weekend" class="event-card"><div class="event-main"><p class="event-title">Waterpark RFC Disco</p><div class="event-meta"><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Fri 27 Mar [19:00]</span><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Waterpark Rugby Football Club</span></div></div><div class="event-actions"><span class="more-link">More info <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a><a href="https://scouts.yutori.com/api/view?url=https%3A%2F%2Fwaterfordlibrary.net%2Fevent%2Ffiber-fanatics-meet-up%2F2027-05-06&referrer=email&scout_id=1e1136bb-9fbd-42a7-9835-d420f957973d&destination=source" class="event-card tint"><div class="event-main"><p class="event-title">Felt Egg Ornaments Workshop</p><div class="event-meta"><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Thu 26 Mar [18:30]</span><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Waterford Public Library</span></div></div><div class="event-actions"><span class="badge-free">Free</span><span class="more-link">More info <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a><a href="https://scouts.yutori.com/api/view?url=https%3A%2F%2Fwww.waterford-news.ie%2Fcommunity%2Flocal-notes-peer-support-bingo-night-and-a-digital-easter-camp_arid-91750.html&referrer=email&scout_id=1e1136bb-9fbd-42a7-9835-d420f957973d&destination=source" class="event-card"><div class="event-main"><p class="event-title">Digital Easter Camp</p><div class="event-meta"><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Mon 30 Mar [09:00]</span><span class="meta-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Waterford Public Library</span></div></div><div class="event-actions"><span class="badge-free">Free</span><span class="more-link">More info <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a></div></section>
+
+<section class="cat-section"><div class="cat-strip"><div class="cat-strip-left"><div class="cat-bar"></div><span class="cat-name">Other</span></div><span class="cat-count">29 events</span></div><div class="cat-cards">
+<a class="event-card" href="https://www.meetup.com/find/ie--waterford/"><span class="event-title">Let's play - Ongoing Adventure!</span><span class="event-meta">Tue 24 Mar [19:00] • Waterford Dungeons &amp; Dragons Meetup</span></a>
+<a class="event-card alt" href="https://thereg.ie/events/"><span class="event-title">Ireland vs Czech Republic at The Reg</span><span class="event-meta">Thu 26 Mar • The Reg Waterford</span></a>\n<a class="event-card tint" href="https://garterlane.ie/events/"><span class="event-title">Theatre Vamps Present - Sins of the Father</span><span class="event-date">Thu 26 Mar [20:00]</span><span class="event-location">Basement</span></a>
+<a class="event-card" href="https://allevents.in/waterford/this-weekend"><span class="event-title">Faithlegg Charity - 4 Person Scramble</span><span class="event-date">Fri 27 Mar [08:00]</span><span class="event-location">Faithlegg</span><span class="event-price">30-50</span></a>
+<a class="event-card tint" href="https://allevents.in/waterford/this-weekend"><span class="event-title">Pilates &amp; Brunch with Nourish with Maria</span><span class="event-date">Sat 28 Mar [10:30]</span><span class="event-location">Base Studios</span><span class="event-price">33</span></a>
+<a class="event-card" href="https://allevents.in/waterford/this-weekend"><span class="event-title">HSFW Book Club – Pines by Blake Crouch</span><span class="event-date">Sat 28 Mar [12:30]</span><span class="event-location">The Book Bar</span></a>\n<a class="event-card" href="https://www.meetup.com/find/ie--waterford/" data-category="Other" data-date="2026-03-30" data-weekday="Monday" data-time="20:00" data-location="Revolution Bar, Waterford" data-price="Free">
+  <div class="event-card__title">Boardgames(and drinks) night at Revolution Bar</div>
+  <div class="event-card__meta">
+    <span class="event-card__date">Mon 30 Mar [20:00]</span>
+    <span class="event-card__location">Revolution Bar</span>
+    <span class="event-card__price">Free</span>
+  </div>
+</a>\n<a class="event-card tint" href="https://scouts.yutori.com/api/view?url=https%3A%2F%2Fwww.waterford-news.ie%2Fcommunity%2Flocal-notes-rlni-quiz-local-boxing-success-and-a-space-for-people-to-chat-as-gaeilge_arid-91769.html&referrer=email&scout_id=1e1136bb-9fbd-42a7-9835-d420f957973d&destination=source" target="_blank" rel="noopener">
+  <div class="event-title">Tramore Men’s Shed</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">Coastguard Cultural Centre</span>
+  </div>
+</a>
+<a class="event-card" href="https://www.eventbrite.com/e/tracksuit-culture-tickets-1984219319398" target="_blank" rel="noopener">
+  <div class="event-title">TRACKSUIT CULTURE</div>
+  <div class="event-details">
+    <span class="event-date">Wed 25 Mar [22:00]</span>
+    <span class="event-location">Factory</span>
+  </div>
+</a>
+<a class="event-card tint" href="https://www.stickybottle.com/races-results/irish-road-racing-seasons-first-weeks-all-the-events-now-open-for-business/" target="_blank" rel="noopener">
+  <div class="event-title">Irish road racing season&#39;s first weeks | All the events now open for business - Sticky Bottle</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">Clonea Power</span>
+  </div>
+</a>
+<a class="event-card" href="https://www.corkbeo.ie/sport/three-generations-cork-family-host-33469574" target="_blank" rel="noopener">
+  <div class="event-title">Three generations of Cork family to host Irish Cancer Society fundraiser in cosy cottage</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">Waterford</span>
+  </div>
+</a>
+<a class="event-card tint" href="https://www.waterfordlive.ie/news/home/2024282/popular-tv-show-friends-escape-room-pops-up-in-waterford-among-many-new-attractions.html" target="_blank" rel="noopener">
+  <div class="event-title">Popular TV show &#39;Friends&#39; escape room pops up in Waterford among many new attractions</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">The Lismore Heritage Centre</span>
+  </div>
+</a>\n<a class="event-card" href="https://www.waterford-news.ie/news/health/what-to-expect-from-seachtain-na-gaeilge-in-waterford_arid-89551.html" target="_blank" rel="noopener noreferrer" data-category="Event Spotlight" data-date="" data-weekday="" data-time="" data-location="Cove Bar" data-price="" data-date-label="Ongoing" data-location-short="Cove Bar" aria-label="What to expect from Seachtain na Gaeilge in Waterford - Ongoing at Cove Bar">
+  <div class="event-title">What to expect from Seachtain na Gaeilge in Waterford - Health</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">Cove Bar</span>
+  </div>
+  <div class="event-category">Event Spotlight</div>
+</a>
+<a class="event-card alt" href="https://www.discoverireland.ie/waterford/waterford-harvest-festival-2026" target="_blank" rel="noopener noreferrer" data-category="Event Spotlight" data-date="" data-weekday="" data-time="" data-location="Waterford City" data-price="" data-date-label="Ongoing" data-location-short="Waterford City" aria-label="Visit Waterford Harvest Festival 2026 with Discover Ireland - Ongoing in Waterford City">
+  <div class="event-title">Visit Waterford Harvest Festival 2026 with Discover Ireland</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">Waterford City</span>
+  </div>
+  <div class="event-category">Event Spotlight</div>
+</a>
+<a class="event-card" href="https://www.nenaghlive.ie/news/local-news/2033906/tipp-hurlers-postponed-waterford-league-clash-fixed-and-set-for-live-tv-coverage-next-weekend.html" target="_blank" rel="noopener noreferrer" data-category="Event Spotlight" data-date="" data-weekday="" data-time="" data-location="Walsh Park" data-price="" data-date-label="Ongoing" data-location-short="Walsh Park" aria-label="Tipp hurlers postponed Waterford league clash fixed and set for live TV coverage next weekend - Ongoing at Walsh Park">
+  <div class="event-title">Tipp hurlers postponed Waterford league clash fixed and set for live TV coverage next weekend</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">Walsh Park</span>
+  </div>
+  <div class="event-category">Event Spotlight</div>
+</a>
+<a class="event-card alt" href="https://www.dundalkdemocrat.ie/news/dundalk-sport/2033929/double-header-looms-as-dundalk-navigate-relegation-rivals-and-subplots.html" target="_blank" rel="noopener noreferrer" data-category="Event Spotlight" data-date="" data-weekday="" data-time="19:45" data-location="Oriel Park" data-price="" data-date-label="Ongoing" data-location-short="Oriel Park" aria-label="Double-header looms as Dundalk navigate relegation rivals and subplots - Ongoing at Oriel Park, 19:45">
+  <div class="event-title">Double-header looms as Dundalk navigate relegation rivals and subplots - Louth Live</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-time">19:45</span>
+    <span class="event-location">Oriel Park</span>
+  </div>
+  <div class="event-category">Event Spotlight</div>
+</a>
+<a class="event-card" href="https://avondhupress.ie/feast-of-drama-in-ballyduff/" target="_blank" rel="noopener noreferrer" data-category="Event Spotlight" data-date="" data-weekday="" data-time="" data-location="St. Michael's Hall" data-price="" data-date-label="Ongoing" data-location-short="St. Michael's Hall" aria-label="Feast of drama in Ballyduff - Ongoing at St. Michael's Hall">
+  <div class="event-title">Feast of drama in Ballyduff - The Avondhu Newspaper</div>
+  <div class="event-details">
+    <span class="event-date">Ongoing</span>
+    <span class="event-location">St. Michael's Hall</span>
+  </div>
+  <div class="event-category">Event Spotlight</div>
+</a>\n<a class="event-card tint" href="https://www.waterford-news.ie/news/worlds-largest-collection-of-cuckoo-clocks-opening-in-waterford-this-month_arid-90981.html" target="_blank" rel="noopener" aria-label="World's largest collection of cuckoo clocks opening in Waterford this month - News at The Irish Museum of Time">
+  <div class="event-card-top">
+    <span class="event-badge">Event Spotlight</span>
+    <span class="event-date-label">Ongoing</span>
+  </div>
+  <h3 class="event-title">World's largest collection of cuckoo clocks opening in Waterford this month - News</h3>
+  <div class="event-details">
+    <span class="event-location">The Irish Museum of Time</span>
+  </div>
+</a>
+<a class="event-card" href="https://www.donegallive.ie/news/what-s-on/2038345/maggie-s-tavern-to-host-fundraiser-for-brave-toddler-daibhin-curran.html" target="_blank" rel="noopener" aria-label="Maggie's Tavern to host fundraiser for brave toddler Daibhín Curran - Donegal Live at Maggie's Tavern">
+  <div class="event-card-top">
+    <span class="event-badge">Event Spotlight</span>
+    <span class="event-date-label">Ongoing</span>
+  </div>
+  <h3 class="event-title">Maggie's Tavern to host fundraiser for brave toddler Daibhín Curran - Donegal Live</h3>
+  <div class="event-details">
+    <span class="event-location">Maggie's Tavern</span>
+  </div>
+</a>
+<a class="event-card tint" href="https://waterfordcouncil.ie/age-friendly-waterford-joins-17th-waterford-festival-of-food-with-special-events-for-older-people/" target="_blank" rel="noopener" aria-label="Age Friendly Waterford Joins 17th Waterford Festival of Food with Special Events for Older People in Dungarvan">
+  <div class="event-card-top">
+    <span class="event-badge">Event Spotlight</span>
+    <span class="event-date-label">Ongoing</span>
+  </div>
+  <h3 class="event-title">Age Friendly Waterford Joins 17th Waterford Festival of Food with Special Events for Older People</h3>
+  <div class="event-details">
+    <span class="event-location">Dungarvan</span>
+  </div>
+</a>
+<a class="event-card" href="https://avondhupress.ie/tickets-moving-quickly-for-blackwater-valley-opera-festival/" target="_blank" rel="noopener" aria-label="Tickets moving quickly for Blackwater Valley Opera Festival - The Avondhu Newspaper at Lismore Heritage Centre">
+  <div class="event-card-top">
+    <span class="event-badge">Event Spotlight</span>
+    <span class="event-date-label">Ongoing</span>
+  </div>
+  <h3 class="event-title">Tickets moving quickly for Blackwater Valley Opera Festival - The Avondhu Newspaper</h3>
+  <div class="event-details">
+    <span class="event-location">Lismore Heritage Centre</span>
+  </div>
+</a>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">1691</p>
+        <p class="footer-tagline">A weekly guide to what’s on in Limerick. Curated by locals, for locals.</p>
+        <a href="https://www.1691.ie" class="footer-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Subscribe free</a>
+      </div>
+      <div class="footer-stats">
+        <div class="stat-card"><p class="stat-num">96</p><p class="stat-label">Events this week</p></div>
+        <div class="stat-card"><p class="stat-num">2</p><p class="stat-label">Free to attend</p></div>
+        <div class="stat-card"><p class="stat-num">5</p><p class="stat-label">Categories</p></div>
+        <div class="stat-card"><p class="stat-num">Limerick</p><p class="stat-label">Your area</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 1691. Updated weekly.</p>
+      <div class="footer-links">
+        <a href="https://andrewsykes.notion.site/Privacy-Policy-2d95933e37df8010b8c9e2dd7e74e5a5" target="_blank" rel="noopener">Privacy policy</a>
+        <a href="https://andrewsykes.notion.site/Terms-Conditions-2d95933e37df806c97f3c74d70e43cb3" target="_blank" rel="noopener">Terms &amp; conditions</a>
+        <a href="https://www.1691.ie">1691.ie</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
