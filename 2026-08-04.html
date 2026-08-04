@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1691 — What’s On in Limerick</title>
+  <meta name="description" content="What’s on in Limerick this week.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── BRAND IDENTITY ─────────────────────────────────── */
+      --accent:           #4A9278;
+      --accent-hover:     #357A62;
+      --accent-light:     #A8CEC4;
+
+      /* ── INK & GROUND ───────────────────────────────────── */
+      --dark:             #1A4044;
+      --base:             #F5F7F4;
+
+      /* ── FULL TEXT SCALE ─────────────────────────────────── */
+      --body-text:        #1A4044;
+      --body-muted:       #305850;
+      --body-subtle:      #6A8880;
+      --divider:          rgba(26,64,68,0.10);
+
+      /* ── NEUTRAL ─────────────────────────────────────────── */
+      --neutral:          #527060;
+
+      /* ── CARD SURFACES ───────────────────────────────────── */
+      --card-bg:          #FAFCF9;
+      --card-tint:        #EEF6F0;
+      --card-border:      rgba(30,30,30,0.07);
+
+      /* ── ACCENT TINT SCALE ───────────────────────────────── */
+      --tint-strong:      #88C0B0;
+      --tint-mid:         #AECFC6;
+      --tint-soft:        #D0E8E2;
+
+      /* ── FOOTER ─────────────────────────────────────────── */
+      --footer-bg:        #102C30;
+      --footer-text:      #A8C0B8;
+      --footer-muted:     #4A6860;
+
+      /* ── TYPOGRAPHY ─────────────────────────────────────── */
+      --font-display: 'Clash Display', system-ui, sans-serif;
+      --font: 'DM Sans', system-ui, sans-serif;
+
+      /* ── RADII & SHADOWS ─────────────────────────────────── */
+      --r-sm: 8px; --r-md: 12px; --r-lg: 16px;
+      --sh-sm: 0 2px 10px rgba(0,0,0,0.06);
+      --sh-md: 0 6px 24px rgba(0,0,0,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--base); color: var(--dark); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .hero-title, .hero-kicker, h1, h2, .section-heading { font-family: var(--font-display); }
+    .hero { position: relative; min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: url('hero.jpg') center 40% / cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,6,4,0.10) 0%, rgba(8,6,4,0.30) 35%, rgba(8,6,4,0.76) 100%); }
+    .hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; width: 100%; padding: 48px 32px 60px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.18); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 22px; }
+    .hero-dot { width: 5px; height: 5px; background: #F8D4C0; border-radius: 50%; animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.75);} }
+    .hero-title { font-size: clamp(52px, 10vw, 88px); font-weight: 800; letter-spacing: -1.5px; text-transform: uppercase; color: #fff; line-height: 0.92; margin-bottom: 22px; }
+    .hero-title span { display: block; color: rgba(255,255,255,0.75); font-size: 0.52em; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; margin-top: 14px; }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--dark); font-family: var(--font); font-size: 14px; font-weight: 700; text-decoration: none; padding: 13px 22px; border-radius: var(--r-sm); transition: background 0.15s, transform 0.1s; white-space: nowrap; }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.82); font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; }
+    .btn-ghost:hover { color: #fff; border-color: #fff; }
+    .count-strip { background: var(--dark); padding: 16px 32px; }
+    .count-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: nowrap; }
+    .count-item { display: flex; align-items: baseline; gap: 7px; }
+    .count-item strong { font-size: 20px; font-weight: 800; color: var(--accent); }
+    .count-item span { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .count-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.10); flex-shrink: 0; }
+    .main { max-width: 860px; margin: 0 auto; padding: 56px 32px 80px; }
+    .cat-section { margin-bottom: 56px; animation: fadeUp 0.45s ease both; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);} }
+    .cat-section:nth-child(1){animation-delay:0.05s;} .cat-section:nth-child(2){animation-delay:0.10s;} .cat-section:nth-child(3){animation-delay:0.15s;} .cat-section:nth-child(4){animation-delay:0.20s;} .cat-section:nth-child(5){animation-delay:0.25s;} .cat-section:nth-child(6){animation-delay:0.30s;}
+    .cat-strip { background: linear-gradient(105deg, var(--dark) 0%, var(--accent) 100%); border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .cat-strip-left { display: flex; align-items: center; gap: 12px; }
+    .cat-bar { width: 3px; height: 26px; background: rgba(255,255,255,0.7); border-radius: 2px; flex-shrink: 0; }
+    .cat-name { font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.2px; color: #fff; }
+    .cat-count { font-size: 11px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.35); padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.15); }
+    .cat-cards { border: 1px solid var(--card-border); border-top: none; border-radius: 0 0 var(--r-lg) var(--r-lg); overflow: hidden; }
+    .event-card { display: grid; grid-template-columns: 1fr auto; gap: 10px 18px; align-items: center; background: var(--card-bg); padding: 18px 22px; text-decoration: none; color: inherit; border-bottom: 1px solid var(--card-border); position: relative; transition: background 0.15s; }
+    .event-card:last-child { border-bottom: none; }
+    .event-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); opacity: 0; transition: opacity 0.15s; }
+    .event-card:hover { background: #F0F0F0; }
+    .event-card:hover::before { opacity: 1; }
+    .event-card.tint { background: var(--card-tint); }
+    .event-card.tint:hover { background: #E8E8E8; }
+    .event-main { min-width: 0; }
+    .event-title { font-size: 15px; font-weight: 600; color: var(--dark); line-height: 1.3; margin-bottom: 7px; }
+    .event-meta { display: flex; flex-wrap: wrap; gap: 5px 14px; }
+    .meta-chip { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--neutral); }
+    .meta-chip svg { opacity: 0.6; flex-shrink: 0; }
+    .event-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+    .badge-price { font-size: 12px; font-weight: 600; color: var(--neutral); background: transparent; border: 1.5px solid rgba(155,147,134,0.5); padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+    .badge-free { font-size: 12px; font-weight: 700; color: #1A6634; background: transparent; border: 1.5px solid #1A6634; padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+    .badge-plain { font-size: 12px; font-weight: 600; color: var(--neutral); background: transparent; border: 1.5px solid rgba(155,147,134,0.5); padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+    .more-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--dark); text-decoration: none; white-space: nowrap; transition: gap 0.15s; opacity: 0.6; }
+    .more-link:hover { gap: 7px; }
+    .site-footer { background: var(--footer-bg); position: relative; overflow: hidden; }
+    .site-footer::before { content: ''; position: absolute; top: -120px; left: -100px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(74,146,120,0.10) 0%, transparent 65%); pointer-events: none; }
+    .site-footer::after { content: ''; position: absolute; bottom: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(74,146,120,0.06) 0%, transparent 65%); pointer-events: none; }
+    .footer-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 64px 32px 40px; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+    .footer-brand { font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: #fff; line-height: 0.95; margin-bottom: 14px; }
+    .footer-tagline { font-size: 14px; color: var(--footer-text); line-height: 1.65; max-width: 250px; margin-bottom: 26px; }
+    .footer-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-light); color: var(--dark); font-size: 14px; font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: var(--r-sm); transition: background 0.15s, color 0.15s, transform 0.1s; }
+    .footer-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+    .footer-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: start; }
+    .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 18px 16px; }
+    .stat-num { font-size: 30px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--footer-text); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: var(--footer-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 12px; color: var(--footer-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--footer-text); }
+    @media (max-width: 600px) { .hero-inner { padding: 28px 20px 44px; } .hero-title { font-size: 48px; } .main { padding: 40px 20px 60px; } .event-card { grid-template-columns: 1fr; } .event-actions { flex-direction: row; justify-content: space-between; align-items: center; } .footer-top { grid-template-columns: 1fr; gap: 32px; } .footer-inner { padding: 48px 20px 32px; } .count-strip { padding: 12px 16px; } .count-inner { gap: 12px; } .count-item strong { font-size: 16px; } .count-item span { font-size: 10px; } .count-sep { height: 16px; } }
+  </style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-dot"></span>Limerick  ·  Updated weekly</div>
+    <h1 class="hero-title">1691<br><span>What's On &nbsp;·&nbsp; 4 Aug – 11 Aug 2026</span></h1>
+    <div class="hero-actions">
+      <a href="https://www.1691.ie" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Subscribe — it's free</a>
+      <a href="https://www.1691.ie/archive" class="btn-ghost">Read the newsletter<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+<div class="count-strip">
+  <div class="count-inner">
+    <div class="count-item"><strong style="font-size:28px">30</strong><span style="font-size:16px">events this week</span></div>
+  </div>
+</div>
+<main class="main">
+<div class="cat-section">
+  <div class="cat-strip">
+    <div class="cat-strip-left">
+      <div class="cat-bar"></div>
+      <span class="cat-name">Live Music</span>
+    </div>
+    <span class="cat-count">14 events</span>
+  </div>
+  <div class="cat-cards">
+    <a href="https://www.friarsgate.ie/cliona-hagan-simon-sheerin-unplugged/" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Cliona Hagan &amp; Simon Sheerin – Unplugged</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Enjoy an intimate evening with Cliona Hagan and Simon Sheerin as they perform unplugged, showcasing their musical talents in a cozy setting.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          04/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Friars' Gate Theatre
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.friarsgate.ie/the-fogues/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">The Fógues</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Experience the musical performance by The Fógues, promising an evening filled with lively tunes and entertainment.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          05/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Friars' Gate Theatre
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.dolans.ie/gigs-events-live-music-listings/2026/2/19/the-gerry-cinna-man-experience" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">The Gerry Cinna-man Experience</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">A tribute show celebrating the music of Gerry Cinnamans. Over 18s only, subject to door and stage time changes.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          07/08/2026, 20:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dolans Kasbah
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.eventbrite.ie/e/limerick-desi-night-summer-vibes-tickets-1993572346554?aff=ebdssbdestsearch" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Limerick Desi Night Summer vibes</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Join us for a vibrant evening of music and culture at the Limerick Desi Night Summer vibes event, perfect for a fun night out.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          07/08/2026, 21:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          The Black Rabbit
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.ticketmaster.ie/dolans-warehouse-tickets-limerick-city/venue/197349" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">The Chop Sueys &amp; Hard Bizkit</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">The Chop Sueys (Korn/Deftones tribute) and Hard Bizkit (Limp Bizkit/Linkin Park tribute). — Fri 07 Aug, 20:00 — Dolans Warehouse, Limerick C</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          07/08/2026, 20:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dolans Warehouse, Limerick City
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.dolans.ie/gigs-events-live-music-listings/2026/8/8/favourite-worst-nightmare-the-ultimate-tribute-to-arctic-monkeys" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Favourite Worst Nightmare: Arctic Monkeys Tribute</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Ireland's premier Arctic Monkeys tribute band delivers electrifying live set spanning the band's entire discography; standing, over-18s only. dolans</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, 20:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dolans Warehouse
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.ilovelimerick.ie/one-fomhar-droad-festival-treaty-city-brewery/" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">One Fómhar D’Road Festival</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">A new seasonal street festival featuring live entertainment, food stalls, and a full outdoor bar. — Sat 08 Aug, 10:00 — Nicholas Street, Lim</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, 10:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Nicholas Street, Limerick
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.limerickpost.ie/2026/07/29/limerick-soprano-eve-stafford-set-for-emotional-uk-debut-with-rediscovered-cousin/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Songbird Concert — Eve Stafford UK Debut</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">UK debut performance by Limerick soprano Eve Stafford, accompanied by pianist Robert Stafford (her rediscovered cousin).</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, 20:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          St. Peter's Church, Hersham, Surrey, UK
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.thecommercial.pub/gig-listings/the-counterfeits-2-qjrj5" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">The Counterfeits</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Don't miss The Counterfeits performing live at the Record Room on August 9th, bringing their unique sound to the stage.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          09/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Record room
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.ilovelimerick.ie/one-fomhar-droad-festival-treaty-city-brewery/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">One Fómhar D’Road Festival</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">A new seasonal street festival featuring live entertainment, food stalls, and a full outdoor bar. — Sun 09 Aug, 10:00 — Nicholas Street, Lim</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          09/08/2026, 10:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Nicholas Street, Limerick
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.ilovelimerick.ie/one-fomhar-droad-festival-treaty-city-brewery/" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Sunday Jazz Sessions</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Enjoy live jazz music hosted by Treaty City Brewery. — Sun 09 Aug, 15:00 — Nicholas Street, Limerick — Family-friendly</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          09/08/2026, 15:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Nicholas Street, Limerick
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.eventbrite.com/d/ireland--limerick/august/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Limerick Techno: HOTBOXX Cage Rave</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Late-night techno rave with local and visiting DJs in Pharmacia’s intimate warehouse-style space. eventbrite</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          09/08/2026, 22:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Pharmacia
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.thecommercial.pub/gig-listings/tintean-sessions-21" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Tinteán Sessions</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Experience the Tinteán Sessions on August 10th at the Record Room, where music and community come together.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          10/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Record room
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.friarsgate.ie/cliona-hagan-simon-sheerin-unplugged/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Cliona Hagan &amp; Simon Sheerin – Unplugged</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Enjoy an intimate unplugged session with Cliona Hagan and Simon Sheerin, featuring acoustic performances.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          11/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Friars' Gate Theatre
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="cat-section">
+  <div class="cat-strip">
+    <div class="cat-strip-left">
+      <div class="cat-bar"></div>
+      <span class="cat-name">Outdoor &amp; Wellness</span>
+    </div>
+    <span class="cat-count">10 events</span>
+  </div>
+  <div class="cat-cards">
+    <a href="https://www.meetup.com/free-meditation-yoga-limerick/events/315696279/?eventOrigin=city_most_popular_event" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Free Meditation &amp; Yoga - Alternate Tuesday, 6 pm at City library Limerick</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Join us for a calming session of free meditation and yoga at the City Library. Perfect for all levels looking to relax and rejuvenate.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          04/08/2026, 18:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          City library Limerick
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.limerick.ie/discover/whats-on/sport/ocr-world-championships-2026" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">OCR World Championships 2026</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Four-day international championships feature obstacle sprints, short and standard-distance courses, team relays and junior events, welcoming spectators and supporters to Limerick Racecourse.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          06/08/2026, 10:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Limerick Racecourse
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://limericksportforall.ie/" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">European Sport for All Games (TAFISA)</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Festival of traditional European sports &amp; games with free try-outs, community sports days, opening ceremony and cultural activities.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          07/08/2026, 11:00–16:00 (activity periods); opening 18:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Multiple (King John’s Castle, Arthur’s Quay, Honan’s Quay, People’s Park, MIC, UL, etc.)
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.limerick.ie/discover/whats-on/sport/all-ireland-skateboarding-championship" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">All Ireland Skateboarding Championship</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Ireland’s leading skateboarders return to Mount Kenneth for national competition across youth, women, LGBTQ+, adult and masters categories, celebrating skill and skateboarding community.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, 00:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Mount Kennett Skate Park
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.limerick.ie/discover/whats-on/festivals/summer-in-the-city" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">European Sport for All Games (part of Summer in the City)</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Community sports, traditional games, activities for all ages as part of broader European event. Free/public.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, 11:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Various locations
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://pigtowntimes.com/limerick-festivals-and-large-events-2026/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Treaty United (Women) vs Cork City</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Women's Premier Division league match; home game for Treaty United with family-friendly atmosphere and local supporter groups. pigtowntimes</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, Match time (typically afternoon/evening; check listings)
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Markets Field
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.limerick.ie/discover/whats-on/festivals/summer-in-the-city" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Dance Limerick Summer Moves 2026</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Outdoor dance event / performances as part of the summer programme.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          09/08/2026, 11:00–15:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          John’s Square
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://limericksportforall.ie/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Closing Party – Limerick Milk Market</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Free closing celebration for the Sport for All Games with music, food vendors, and community activities. limericksportforall</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          10/08/2026, 18:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Milk Market
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://limericksportforall.ie/" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">TAFISA Community Sports Day (UL)</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Second community sports day of the festival; free participation in traditional games and activities from across Europe. limericksportforall</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          10/08/2026, 11:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          University of Limerick – The White House
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.ilovelimerick.ie/2026-european-sport-for-all-games-limerick-city/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">European Sport For All Games – Community Sports Day &amp; Closing Party</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Final community sports session at UL followed by official closing party at Milk Market, wrapping up the four-day festival. ilovelimerick</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          10/08/2026, 11:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          The White House, University of Limerick; Milk Market (evening)
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="cat-section">
+  <div class="cat-strip">
+    <div class="cat-strip-left">
+      <div class="cat-bar"></div>
+      <span class="cat-name">Arts &amp; Culture</span>
+    </div>
+    <span class="cat-count">5 events</span>
+  </div>
+  <div class="cat-cards">
+    <a href="https://www.eventbrite.ie/d/ireland--limerick/all-events" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Limerick Plein Air Festival</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Outdoor painting festival inviting artists of all levels to capture Limerick's streetscapes and river views; drop-in sessions across the week. eventbrite</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          04/08/2026, 10:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Various city locations
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://kingjohnscastle.ie/shapedbywater2025/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Heritage Week 2025</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Celebrate Heritage Week with us at King John's Castle, featuring storytelling performances and music that highlight Limerick's water-related stories.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          05/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          King John's Castle
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.huntmuseum.com/whats-on/nature-lantern-workshop/" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Nature Lantern – Art Workshop</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Join us for a creative workshop where you'll make your own nature lantern, perfect for illuminating your outdoor spaces.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          06/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Hunt Museum
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.huntmuseum.com/whats-on/perms-updos-bobs-and-shaved-heads/" class="event-card tint" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Perms, Updos, Bobs and Shaved Heads</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Explore the fascinating world of hairstyles through the ages in this engaging evening event at the Hunt Museum.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          06/08/2026, Times vary - see website
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Hunt Museum
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="https://www.limerick.ie/discover/whats-on/festivals/summer-in-the-city" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Echoes of Limerick / European Sport for All public activities</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Public art/heritage and traditional sports try-out sessions across the city.</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          08/08/2026, 11:00 onwards
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Thomas Street / various city locations
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="cat-section">
+  <div class="cat-strip">
+    <div class="cat-strip-left">
+      <div class="cat-bar"></div>
+      <span class="cat-name">Family Friendly</span>
+    </div>
+    <span class="cat-count">1 event</span>
+  </div>
+  <div class="cat-cards">
+    <a href="https://www.eventbrite.ie/d/ireland--limerick/all-events" class="event-card" target="_blank" rel="noopener">
+      <div class="event-main">
+        <p class="event-title">Lough Gur Nature &amp; Kayaking Summer Camps</p>
+        <p class="event-description" style="margin:6px 0 0;color:#5b6470;font-size:0.94rem;line-height:1.38">Guided nature and kayaking sessions for families and adults; explore Ireland's largest natural lake with expert local guides. eventbrite</p>
+        <div class="event-meta">
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          11/08/2026, 10:00
+        </span>
+        <span class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Lough Gur Visitor Centre
+        </span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <span class="more-link">Details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">1691</p>
+        <p class="footer-tagline">Curated weekly to help you plan your week ahead in minutes.</p>
+        <a href="https://www.1691.ie" class="footer-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Subscribe free</a>
+      </div>
+      <div class="footer-stats">
+        <div class="stat-card"><p class="stat-num" style="font-size:48px;line-height:1">30</p><p class="stat-label">Events this week</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 1691. Updated weekly.</p>
+      <div class="footer-links">
+        <a href="https://events.1691.ie/legal" target="_blank" rel="noopener">Privacy policy</a>
+        <a href="https://events.1691.ie/legal" target="_blank" rel="noopener">Terms &amp; conditions</a>
+        <a href="https://www.1691.ie">1691.ie</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
