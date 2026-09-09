@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://events.1691.ie/sitemap.xml
